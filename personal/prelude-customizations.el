@@ -19,3 +19,16 @@
 
 ;; restore menu
 (menu-bar-mode 1)
+
+(prelude-require-package 'auto-dictionary)
+(add-hook 'flyspell-mode-hook (lambda () (auto-dictionary-mode 1)))
+
+;; TODO flyspell-lazy? Other flyspell performance improvements?
+;; see http://www.emacswiki.org/emacs/FlySpell
+(setq flyspell-issue-message-flag nil)
+(setq flyspell-issue-welcome-flag nil)
+;; see http://www.brool.com/index.php/speeding-up-flyspell-region
+(defadvice flyspell-region (around fast-flyspell-region)
+  (flet ( (sit-for (x) t) ) 
+    ad-do-it))
+(ad-activate 'flyspell-region)
