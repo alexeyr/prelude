@@ -16,3 +16,6 @@
 
 ;; Restore last session on startup
 (desktop-save-mode 1)
+
+;; restore menu
+(menu-bar-mode 1)
