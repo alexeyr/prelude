@@ -13,3 +13,6 @@
 
 (when desired-font
   (set-face-attribute 'default nil :family desired-font))
+
+;; Restore last session on startup
+(desktop-save-mode 1)
