@@ -35,6 +35,14 @@
 (prelude-require-packages '(auctex cdlatex))
 (require 'smartparens-latex)
 
+(defun prelude-latex-if-company-loaded ()
+  (eval-after-load "company"
+    '(progn
+       (prelude-require-packages '(company-auctex))
+       (company-auctex-init))))
+
+(add-hook 'after-init-hook 'prelude-latex-if-company-loaded)
+
 ;; AUCTeX configuration
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
